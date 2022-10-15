@@ -48,8 +48,6 @@ class ContactForm extends Component {
           </label>
           <button type="submit">Add contact</button>
         </form>
-        <ContactForm />
-        {/* <ContactList contacts={contacts} /> */}
       </>
     );
   }

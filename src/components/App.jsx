@@ -11,6 +11,10 @@ class App extends Component {
     // number: '',
   };
 
+  formSubmitHandler = data => {
+    console.log(data);
+  }
+
   //вебинар 3. События и состояние. 16.06.20    1.46.49 доробити видалення
 
   // deleteContact = contactId => {
@@ -24,7 +28,7 @@ class App extends Component {
 
     return (
       <>
-        <ContactForm />
+        <ContactForm onSubmit={this.formSubmitHandler} />
       </>
     );
   }

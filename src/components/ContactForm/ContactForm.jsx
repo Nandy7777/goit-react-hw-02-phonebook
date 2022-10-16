@@ -33,7 +33,7 @@ class ContactForm extends Component {
       <>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor={this.nameInputId}>
-            Name{' '}
+            Name
             <input
               type="text"
               name="name"
@@ -45,7 +45,7 @@ class ContactForm extends Component {
               id={this.nameInputId}
             />
             <label htmlFor={this.numberInputId}>
-              Number{' '}
+              Number
               <input
                 type="tel"
                 name="number"

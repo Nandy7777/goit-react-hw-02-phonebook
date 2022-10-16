@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import shortid from 'shortid';
+import { Form, Label, Input, Button, FormWrap } from './ContactForm.styled';
 
 class ContactForm extends Component {
   state = {
@@ -30,11 +31,11 @@ class ContactForm extends Component {
 
   render() {
     return (
-      <>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor={this.nameInputId}>
+      <FormWrap>
+        <Form onSubmit={this.handleSubmit}>
+          <Label htmlFor={this.nameInputId}>
             Name
-            <input
+            <Input
               type="text"
               name="name"
               value={this.state.name}
@@ -44,23 +45,23 @@ class ContactForm extends Component {
               required
               id={this.nameInputId}
             />
-            <label htmlFor={this.numberInputId}>
-              Number
-              <input
-                type="tel"
-                name="number"
-                value={this.state.number}
-                onChange={this.handleChange}
-                pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-                title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-                required
-                id={this.numberInputId}
-              ></input>
-            </label>
-          </label>
-          <button type="submit">Add contact</button>
-        </form>
-      </>
+          </Label>
+          <Label htmlFor={this.numberInputId}>
+            Number
+            <Input
+              type="tel"
+              name="number"
+              value={this.state.number}
+              onChange={this.handleChange}
+              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+              required
+              id={this.numberInputId}
+            />
+          </Label>
+          <Button type="submit">Add contact</Button>
+        </Form>
+      </FormWrap>
     );
   }
 }

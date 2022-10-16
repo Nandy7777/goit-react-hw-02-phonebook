@@ -1,7 +1,7 @@
-// import { render } from '@testing-library/react';
 import { Component } from 'react';
-import ContactList from 'components/ContactList';
-import ContactForm from 'components/ContactForm';
+import ContactList from './ContactList';
+import ContactForm from './ContactForm';
+import Filter from './Filter'
 import shortid from 'shortid';
 
 
@@ -13,6 +13,7 @@ class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
+    filter: '',
   };
 
   formSubmitHandler = ({ name, number }) => {
@@ -27,6 +28,11 @@ class App extends Component {
     }));
   };
 
+  changeFilter = event => {
+    this.setState({ filter: event.currentTarget.value });
+  };
+  
+
   //вебинар 3. События и состояние. 16.06.20    1.46.49 доробити видалення
 
   // deleteContact = contactId => {
@@ -36,14 +42,21 @@ class App extends Component {
   // };
 
   render() {
-    const { contacts } = this.state;
+    const { filter } = this.state;
 
+    const normalizedFilter = this.state.filter.toLowerCase();
+
+    const visibleContacts = this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter))
+    
+    
     return (
       <div>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.formSubmitHandler} />
         <h2>Contacts</h2>
-        <ContactList contacts={contacts} />
+        <Filter value={filter} onChange={this.changeFilter} />
+        <ContactList contacts={visibleContacts} />
       </div>
     );
   }

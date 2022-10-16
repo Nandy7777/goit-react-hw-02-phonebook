@@ -38,14 +38,11 @@ class App extends Component {
     this.setState({ filter: event.currentTarget.value });
   };
   
-
-  //вебинар 3. События и состояние. 16.06.20    1.46.49 доробити видалення
-
-  // deleteContact = contactId => {
-  //   this.setState(prevState => ({
-  //     contacts: prevState.contacts.filter(contact => contact.id !== contactId),
-  //   }));
-  // };
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
 
   render() {
     const { filter } = this.state;
@@ -62,7 +59,10 @@ class App extends Component {
         <ContactForm onSubmit={this.formSubmitHandler} />
         <h2>Contacts</h2>
         <Filter value={filter} onChange={this.changeFilter} />
-        <ContactList contacts={visibleContacts} />
+        <ContactList
+          contacts={visibleContacts}
+          onDelete={this.deleteContact}
+        />
       </div>
     );
   }

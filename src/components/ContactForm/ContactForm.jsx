@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import { Form, Label, Input, Button, FormWrap } from './ContactForm.styled';
 
@@ -64,6 +65,10 @@ class ContactForm extends Component {
       </FormWrap>
     );
   }
+}
+
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 }
 
 export default ContactForm;
